@@ -2,8 +2,8 @@ from django.db import models
 
 # Create your models here.
 class Empresas(models.Model):
-    codigo=models.IntegerField(primary_key=True)
-    nombre=models.TextField(max_length=30,null=False)
+    codigo=models.AutoField(primary_key=True)
+    empresa=models.TextField(max_length=30,null=False)
     ubicacion=models.CharField(max_length=45,null=False)
     email=models.EmailField(max_length=45,unique=True)
     nit=models.IntegerField(null=False)
@@ -11,6 +11,9 @@ class Empresas(models.Model):
     telefono=models.IntegerField(null=False)
     sector_p=models.CharField(max_length=45,null=False)
     fecha_cre=models.DateField(auto_now=True)
+
+    def __str__(self):
+        return self.nombre
 
 class Empleado(models.Model):
     usuario=models.CharField(max_length=30, primary_key=True)
@@ -24,34 +27,48 @@ class Empleado(models.Model):
     fecha_cre=models.DateField(auto_now=True)
     empresa=models.ForeignKey(Empresas, on_delete=models.CASCADE)
     
+    def __str__(self):
+        return self.nombre+" "+self.apellido
+    
 class Movimientos(models.Model):
     empresa=models.CharField(max_length=45,primary_key=True)
-    codigo_mov=models.IntegerField(auto_created=True)
+    codigo_mov=models.IntegerField(null=False)
     ingresos=models.IntegerField(null=False)
     egresos=models.IntegerField(null=False)
     fecha_hora=models.DateField(auto_now=True)
-    usuario=models.CharField(max_length=30, null=False)
+    usuario=models.ForeignKey(Empleado, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.empresa+" "+self.codigo_mov
 
-    
+  
 class Administrador(models.Model):
     usuario=models.CharField(max_length=30, primary_key=True)
     email=models.EmailField(max_length=45,unique=True)
     contraseña=models.CharField(max_length=18)
     fecha_cre=models.DateField(auto_now=True)
+
+    def __str__(self):
+        return self.usuario
     
 class Login(models.Model):
-    contador=models.IntegerField(primary_key=True)
-    usuario=models.ForeignKey(Administrador,on_delete=models.CASCADE)
+    contador=models.AutoField(primary_key=True)
+    usuario=models.CharField(max_length=30,unique=True)
     contraseña=models.CharField(max_length=18)
+
+    def __str__(self):
+        return self.usuario
 
 class Gerente(models.Model):
     usuario=models.CharField(max_length=30, primary_key=True)
     contraseña=models.CharField(max_length=18)
-    empresa=models.CharField(max_length=45)
-    codigo=models.ForeignKey(Movimientos, on_delete=models.CASCADE)
+    empresa=models.ForeignKey(Empresas, on_delete=models.CASCADE)
+    codigo=models.IntegerField(null=False)
     email=models.EmailField(max_length=45,unique=True)
     fecha_cre=models.DateField(auto_now=True)
+
+    def __str__(self):
+        return self.usuario
 
 
     

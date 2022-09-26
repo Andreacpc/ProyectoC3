@@ -31,7 +31,7 @@ class EmpresaView(View):
 
     def post(self,request):
         data=json.loads(request.body)
-        Empr=Empresas(codigo=data['codigo'],nombre=data['nombre'], 
+        Empr=Empresas(codigo=data['codigo'],empresa=data['empresa'], 
         ubicacion=data['ubicacion'],email=data['email'],nit=data['nit'],
         telefono=data['telefono'],sector_p=data['sector_p'])
         Empr.save()
@@ -40,10 +40,10 @@ class EmpresaView(View):
     
     def put(self,request,codigo):
         data=json.loads(request.body)
-        Empr=list(Empresas.objects.filter(codigo=codigo).values())
-        if len(Empr)>0:
+        Empre=list(Empresas.objects.filter(codigo=codigo).values())
+        if len(Empre)>0:
             Empr=Empresas.objects.get(codigo=codigo)
-            Empr.nombre=data["nombre"]
+            Empr.empresa=data["empresa"]
             Empr.ubicacion=data["ubicacion"]
             Empr.email=data["email"]
             Empr.nit=data["nit"]
@@ -91,19 +91,18 @@ class EmpleadoView(View):
         data=json.loads(request.body)
         try:
             Empr=Empresas.objects.get(empresa=data["empresa"])
-            Emp=Empleado.objects.create(empresa=Empr)
+            Emp=Empleado(usuario=data['usuario'],nombre=data['nombre'], 
+            apellido=data['apellido'],email=data['email'],celular=data['celular'],
+            fecha_nac=data['fecha_nac'],contraseña=data['contraseña'],codigo=data['codigo'],
+            empresa=Empr)
+            #Emp=Empleado.objects.create(empresa=Empr)
             Emp.save()
-            mensaje={"Mensaje":"Prestamo Registrado."}
+            datos={"Mensaje":"Empleado registrado exitosamente."}
         except Empresas.DoesNotExist:
-            mensaje={"Mensaje":"La empresa no existe."}
-        return JsonResponse(mensaje)
-        '''Emp=Empleado(usuario=data['usuario'],nombre=data['nombre'], 
-        apellido=data['apellido'],email=data['email'],celular=data['celular'],
-        fecha_nac=data['fecha_nac'],contraseña=data['contraseña'],codigo=data['codigo'],
-        empresa=data['empresa'])
-        Emp.save()
-        datos={"mensaje":"Empleado registrado exitosamente."}
-        return JsonResponse(datos)'''
+            datos={"Mensaje":"La empresa no existe."}
+        return JsonResponse(datos)
+        
+        
     
     def put(self,request,usuario):
         data=json.loads(request.body)
