@@ -3,6 +3,7 @@ from django.views import View
 import json
 from aplicacion.models import Empleado
 from aplicacion.models import Empresas
+from aplicacion.models import Movimientos
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
@@ -108,17 +109,21 @@ class EmpleadoView(View):
         data=json.loads(request.body)
         Emp=list(Empleado.objects.filter(usuario=usuario).values())
         if len(Emp)>0:
-            Empl=Empleado.objects.get(usuario=usuario)
-            Empl.nombre=data["nombre"]
-            Empl.apellido=data["apellido"]
-            Empl.email=data["email"]
-            Empl.celular=data["celular"]
-            Empl.fecha_nac=data["fecha_nac"]
-            Empl.contraseña=data["contraseña"]
-            Empl.codigo=data["codigo"]
-            Empl.empresa=data["empresa"]
-            Empl.save()
-            mensaje={"mensaje":"Empleado actualizado exitosamente"}
+            try:
+                Empl=Empleado.objects.get(usuario=usuario)
+                Empl.nombre=data["nombre"]
+                Empl.apellido=data["apellido"]
+                Empl.email=data["email"]
+                Empl.celular=data["celular"]
+                Empl.fecha_nac=data["fecha_nac"]
+                Empl.contraseña=data["contraseña"]
+                Empl.codigo=data["codigo"]
+                Empr=Empresas.objects.get(empresa=data["empresa"])
+                Empl.empresa=Empr
+                Empl.save()
+                mensaje={"mensaje":"Empleado actualizado exitosamente"}
+            except Empresas.DoesNotExist:
+                mensaje={"mensaje":"No se encontró la empresa."}
         else:
             mensaje={"mensaje":"No se encontró al empleado."}
         return JsonResponse(mensaje)
@@ -132,3 +137,39 @@ class EmpleadoView(View):
             mensaje={"mensaje":"No se encontró al empleado"}
         return JsonResponse(mensaje)
 
+class MovimientosView(View):
+
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+  
+    def get(self,request,codigo_mov=""):
+        if len(codigo_mov)>0:
+            Movi=list(Movimientos.objects.filter(codigo_mov=codigo_mov).values())
+            if len(Movi)>0:
+                datos={'mensaje':Movi}
+            else:
+                datos={'mensaje':"No se encontró al empleado."}
+        else:
+            Movi=list(Movimientos.objects.values())
+            if len(Movi)>0:
+                datos={"mensaje":Movi}
+            else:
+                datos={"mensaje":"No se encontraron empleados."}
+        return JsonResponse(datos)
+
+    def post(self,request):
+        data=json.loads(request.body)
+        try:
+            usu=Empleado.objects.get(usuario=data["usuario"])
+            Empr=Empresas.objects.get(empresa=data["empresa"])
+            Movi=Movimientos(ingresos=data['ingresos'],egresos=data['egresos'], 
+            usuario=usu,empresa=Empr)
+            Movi.save()
+            datos={"Mensaje":"Movimiento registrado exitosamente."}
+        except Empresas.DoesNotExist:
+            datos={"Mensaje":"La empresa no existe."}
+        except Empleado.DoesNotExist:
+            datos={"Mensaje":"El empleado no existe."}
+        return JsonResponse(datos)
+        

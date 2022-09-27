@@ -13,7 +13,7 @@ class Empresas(models.Model):
     fecha_cre=models.DateField(auto_now=True)
 
     def __str__(self):
-        return self.nombre
+        return self.empresa
 
 class Empleado(models.Model):
     usuario=models.CharField(max_length=30, primary_key=True)
@@ -31,12 +31,13 @@ class Empleado(models.Model):
         return self.nombre+" "+self.apellido
     
 class Movimientos(models.Model):
-    empresa=models.CharField(max_length=45,primary_key=True)
-    codigo_mov=models.IntegerField(null=False)
+    codigo_mov=models.AutoField(primary_key=True)
     ingresos=models.IntegerField(null=False)
     egresos=models.IntegerField(null=False)
     fecha_hora=models.DateField(auto_now=True)
     usuario=models.ForeignKey(Empleado, on_delete=models.CASCADE)
+    empresa=models.ForeignKey(Empresas, on_delete=models.CASCADE)
+    
 
     def __str__(self):
         return self.empresa+" "+self.codigo_mov
