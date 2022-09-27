@@ -4,7 +4,7 @@ from aplicacion.views import EmpresaView
 
 urlpatterns= [
     path('Empleado/',EmpleadoView.as_view(),name='Listar'),
-    path('Empleado/<str:isbn>',EmpleadoView.as_view(),name='Buscar'),
+    path('Empleado/<str:usuario>',EmpleadoView.as_view(),name='Buscar'),
     path('Empresa/',EmpresaView.as_view(),name='Listar'),
-    path('Empresa/<str:isbn>',EmpresaView.as_view(),name='Buscar')
+    path('Empresa/<str:codigo>',EmpresaView.as_view(),name='Buscar')
 ]
