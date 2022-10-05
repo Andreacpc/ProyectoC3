@@ -1,0 +1,113 @@
+body{
+    background-image: url('../fondo.png');
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+}
+
+.contheader{
+    background-color: rgb(238, 238, 253);
+    height: 150px;
+    display: flex;
+    align-items: center;
+}
+
+.titulologo{
+    background-color: 0;
+    color:rgb(0, 9, 52);
+    width: 60%;
+    height: 60px;
+    margin-top: 0px;
+    margin-right: 60px;
+    margin-left: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items:center;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.logo{
+    background-image: url('../logo.png');
+    width: 150px;
+    height: 150px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-top: 30px;
+}
+
+.menu{
+    background-color: 0;
+    width: 40%;
+    height: 70px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lista{
+    display: inline;
+    background-color: rgb(31, 6, 80);
+    width: 200px;
+    border-radius: 50px 10px;
+    padding: 20px 10px;
+}
+
+
+.titulolop{
+font-size: 20px;
+font-weight: bold;
+display: flex;
+align-items:flex-start;
+}
+
+
+html {
+  height:100%;
+  perspective: 1000px;
+  transform-style:preserver-3d;
+  font-family:lato, sans-serif;
+}
+
+
+ul {
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
+  min-width:535px;
+  background-color:rgb(11, 34, 54);
+  position:relative;
+
+
+ 
+  box-shadow:0 3px 8px rgba(black,.5);
+}
+
+li {
+  margin: 0 auto;
+  display: inline-block;
+  list-style: none;
+  padding:0;
+}
+
+a {
+  display: block;
+  padding: 25px;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 2;
+  color:ghostwhite;
+  letter-spacing:.2em;
+  text-decoration: none;
+  transform-style: preserve-3d;
+}
+
+.gestionempresa{
+    color:blue;
+    height: 150px;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+}
