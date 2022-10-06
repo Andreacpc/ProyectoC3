@@ -1,5 +1,5 @@
 body{
-    background-image: url('../fondo.png');
+    background-image: url('../css/fondo.png');
     background-size: cover;
     margin: 0;
     padding: 0;
@@ -27,7 +27,7 @@ body{
 }
 
 .logo{
-    background-image: url('../logo.png');
+    background-image: url('../css/logo.png');
     width: 150px;
     height: 150px;
     background-size: contain;
