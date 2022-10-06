@@ -13,47 +13,104 @@
     <div class="container mt-10">
 
         <form class="row g-3">
-            <div class="col-md-6">
-              <label for="inputEmail4" class="form-label">Email</label>
-              <input type="email" class="form-control" id="inputEmail4">
-            </div>
-            <div class="col-md-6">
-              <label for="inputPassword4" class="form-label">Password</label>
-              <input type="password" class="form-control" id="inputPassword4">
-            </div>
-            <div class="col-12">
-              <label for="inputAddress" class="form-label">Address</label>
-              <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-            </div>
-            <div class="col-12">
-              <label for="inputAddress2" class="form-label">Address 2</label>
-              <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-            </div>
-            <div class="col-md-6">
-              <label for="inputCity" class="form-label">City</label>
-              <input type="text" class="form-control" id="inputCity">
+            <div class="col-md-8">
+              <label for="empresa" class="form-label">Empresa</label>
+              <input type="text" class="form-control" id="empresa" required maxlength="30">
             </div>
             <div class="col-md-4">
-              <label for="inputState" class="form-label">State</label>
-              <select id="inputState" class="form-select">
-                <option selected>Choose...</option>
-                <option>...</option>
-              </select>
+              <label for="nit" class="form-label">NIT</label>
+              <input type="text" class="form-control" id="nit" required>
+            </div>
+            <div class="col-md-12">
+              <label for="sector_p" class="form-label">Sector Productivo</label>
+              <input type="text" class="form-control" id="sector_p" required maxlength="45">
+            </div>
+            <div class="col-md-10">
+              <label for="ubicacion" class="form-label">DIRECCION</label>
+              <input type="text" class="form-control" id="ubicacion" required maxlength="45">
             </div>
             <div class="col-md-2">
-              <label for="inputZip" class="form-label">Zip</label>
-              <input type="text" class="form-control" id="inputZip">
+              <label for="ciudad" class="form-label">Ciudad</label>
+              <select id="ciudad" class="form-select" required>
+                <option selected>Seleccione...</option>
+                <option>Apartadó</option>
+                <option>Arauca</option>
+                <option>Armenia</option>
+                <option>Barrancabermeja</option>
+                <option>Barranquilla</option>
+                <option>Bogotá</option>
+                <option>Bucaramanga</option>
+                <option>Buenaventura</option>
+                <option>Buga</option>
+                <option>Cali</option>
+                <option>Cartagena</option>
+                <option>Cartago</option>
+                <option>Caucasia</option>
+                <option>Ciénaga</option>
+                <option>Cúcuta</option>
+                <option>Duitama</option>
+                <option>El Carmen de Bolívar</option>
+                <option>El Espinal</option>
+                <option>Facatativá</option>
+                <option>Florencia</option>
+                <option>Fusagasugá</option>
+                <option>Girardot</option>
+                <option>Ibagué</option>
+                <option>Inírida</option>
+                <option>Ipiales</option>
+                <option>Leticia</option>
+                <option>Lorica</option>
+                <option>Magangué</option>
+                <option>Maicao</option>
+                <option>Manizales</option>
+                <option>Medellin</option>
+                <option>Mitú</option>
+                <option>Mocoa</option>
+                <option>Montelíbano</option>
+                <option>Montería</option>
+                <option>Neiva</option>
+                <option>Ocaña</option>
+                <option>Palmira</option>
+                <option>Pamplona</option>
+                <option>Pasto</option>
+                <option>Pereira</option>
+                <option>Pitalito</option>
+                <option>Popayán</option>
+                <option>Puerto Asís</option>
+                <option>Puerto Carreño</option>
+                <option>Quibdó</option>
+                <option>Riohacha</option>
+                <option>Rionegro</option>
+                <option>Sabanalarga</option>
+                <option>San Andrés Isla</option>
+                <option>San Gil</option>
+                <option>San José del Guaviare</option>
+                <option>Santa Marta</option>
+                <option>Santander de Quilichao</option>
+                <option>Sincelejo</option>
+                <option>Sogamoso</option>
+                <option>Tuluá</option>
+                <option>Tumaco</option>
+                <option>Tunja</option>
+                <option>Turbo</option>
+                <option>Valledupar</option>
+                <option>Villavicencio</option>
+                <option>Yopal</option>
+                <option>Zipaquirá</option>
+                
+                  <option>...</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" required maxlength="45">
+            </div>
+            <div class="col-md-6">
+              <label for="telefono" class="form-label">Telefono</label>
+              <input type="text" class="form-control" id="telefono">
             </div>
             <div class="col-12">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="gridCheck">
-                <label class="form-check-label" for="gridCheck">
-                  Check me out
-                </label>
-              </div>
-            </div>
-            <div class="col-12">
-              <button type="submit" class="btn btn-primary">Sign in</button>
+              <button type="submit" class="btn btn-primary">Enviar</button>
             </div>
           </form>
 

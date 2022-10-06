@@ -40,7 +40,7 @@ class Movimientos(models.Model):
     
 
     def __str__(self):
-        return self.empresa+" "+self.codigo_mov
+        return self.codigo_mov
 
   
 class Administrador(models.Model):

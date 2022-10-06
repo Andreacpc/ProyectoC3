@@ -21,8 +21,7 @@
             <th>DIRECCION</th>
             <th>CIUDAD</th>
             <th>EMAIL</th>
-            <th>Editar</th>
-            <th>Eliminar</th>
+            
         </thead>
         <tbody>
     {% for Empr in mensaje%}
@@ -34,11 +33,7 @@
         <td>{{Empr.ubicacion}}</td>
         <td>{{Empr.ciudad}}</td>
         <td>{{Empr.email}}</td>
-        <td><a href="{% url 'formulario' Empr.codigo  %}">
-            <button type="button" class="btn btn-warning">Editar</button></a></td>
-        <td>
-            <a href="{% url 'eliminar' Empr.codigo  %}">
-                <button type="button" class="btn btn-danger">Eliminar</button></a></td>
+        
     </tr>
     {% endfor%}
     
