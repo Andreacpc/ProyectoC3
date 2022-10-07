@@ -28,7 +28,7 @@ class Empleado(models.Model):
     empresa=models.ForeignKey(Empresas, on_delete=models.CASCADE)
     
     def __str__(self):
-        return self.nombre+" "+self.apellido
+        return self.usuario
     
 class Movimientos(models.Model):
     codigo_mov=models.AutoField(primary_key=True)

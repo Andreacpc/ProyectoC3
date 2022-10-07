@@ -111,3 +111,11 @@ a {
     display: flex;
     align-items: center;
 }
+
+.gestionempleado{
+  color:blue;
+  height: 150px;
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+}

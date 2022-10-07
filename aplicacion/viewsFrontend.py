@@ -11,3 +11,9 @@ def listaEmpresas(request):
     Empr=response.json()
     print(Empr)
     return render (request,"Empresas.html",Empr)
+
+def listaEmpleado(request):
+    response= requests.get('http://localhost:8000/aplicacion/Empleado/')
+    Empl=response.json()
+    print(Empl)
+    return render (request,"Empleado.html",Empl)

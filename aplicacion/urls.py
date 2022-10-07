@@ -13,5 +13,6 @@ urlpatterns= [
     path('Movimientos/',MovimientosView.as_view(),name='Listar'),
     path('Movimientos/<str:codigo_mov>',MovimientosView.as_view(),name='Buscar'),
     path('', principal, name="index"),
-    path('listaEmpresas/',listaEmpresas,name='lista')
+    path('listaEmpresas/',listaEmpresas,name='lista'),
+    path('listaEmpleado/',listaEmpleado,name='lista')
 ]
