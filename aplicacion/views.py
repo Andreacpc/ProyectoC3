@@ -163,7 +163,7 @@ class MovimientosView(View):
         try:
             usu=Empleado.objects.get(usuario=data["usuario"])
             Empr=Empresas.objects.get(empresa=data["empresa"])
-            Movi=Movimientos(ingresos=data['ingresos'],egresos=data['egresos'], 
+            Movi=Movimientos(ingresos=data['ingresos'],egresos=data['egresos'], concepto=data['concepto'],
             usuario=usu,empresa=Empr)
             Movi.save()
             datos={"Mensaje":"Movimiento registrado exitosamente."}

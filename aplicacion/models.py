@@ -35,6 +35,7 @@ class Movimientos(models.Model):
     ingresos=models.IntegerField(null=False)
     egresos=models.IntegerField(null=False)
     fecha_hora=models.DateField(auto_now=True)
+    concepto=models.TextField(max_length=45,null=True)
     usuario=models.ForeignKey(Empleado, on_delete=models.CASCADE)
     empresa=models.ForeignKey(Empresas, on_delete=models.CASCADE)
     
